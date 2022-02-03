@@ -8,6 +8,7 @@ import android.widget.TextView;
 public class Bienvenido extends AppCompatActivity {
 
     private TextView t;
+    private String nome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,10 +17,21 @@ public class Bienvenido extends AppCompatActivity {
 
         t = (TextView) findViewById(R.id.bienvenido);
 
+        if(savedInstanceState != null){
+            nome = savedInstanceState.getString("nombre");
+
+        }else{
+            nome = "bienvenido";
+        }
+
         Bundle args = getIntent().getExtras();
-        String nome = args.getString("llavenombre");
+        nome = args.getString("llavenombre");
 
         t.setText("Bienvenido "+ nome);
 
+    }
+    protected void onSaveInstanceState(Bundle datos){
+        super.onSaveInstanceState(datos);
+        datos.putString("nombre", nome);
     }
 }
