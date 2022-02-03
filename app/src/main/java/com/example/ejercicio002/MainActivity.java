@@ -50,6 +50,8 @@ public class MainActivity extends DebugActivity implements View.OnClickListener{
                 params.putString("llavenombre", name);
                 intent.putExtras(params);
                 startActivity(intent);
+            }else{
+                Toast.makeText(getApplicationContext(),"Usuario o Contraseña Incorrectos",Toast.LENGTH_LONG).show();
             }
         }
 
